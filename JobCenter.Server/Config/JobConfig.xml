@@ -1,0 +1,13 @@
+﻿<Jobs>
+    <Job>
+        <JobID>5FBAA648-D1E8-E511-B79D-54EE75868DB8</JobID>
+        <JobName>用户加密串日志信息处理</JobName>
+        <JobParams></JobParams>
+        <CronExpression>0/10 * * * * ?</CronExpression>
+        <AssemblyName>JobCenter.Jobs</AssemblyName>
+        <ClassName>JobCenter.Jobs.UnidProcessJob</ClassName>
+        <Status>1</Status>
+        <CreatedTime>2016-11-28 13:00:00</CreatedTime>
+        <CronRemark>每10秒运行一次</CronRemark>
+    </Job>
+</Jobs>

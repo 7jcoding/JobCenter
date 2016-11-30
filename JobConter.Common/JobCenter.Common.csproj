@@ -82,6 +82,7 @@
     <Compile Include="ConfigInit.cs" />
     <Compile Include="ConvertHelper.cs" />
     <Compile Include="DbLogHelper.cs" />
+    <Compile Include="JsonHelper.cs" />
     <Compile Include="PerformanceTracer.cs" />
     <Compile Include="Quartz\CustomTriggerListener.cs" />
     <Compile Include="DESEncrypt.cs" />

@@ -70,7 +70,7 @@ namespace JobCenter.DAL
                                  WHERE DATEDIFF(dd,CreateTime,GETDATE())<=30";
 
             QUERY_SQL += ") pp ";
-            string SQL = string.Format(@" SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY pp.dtDate DESC) AS RowNum,* FROM {0}
+            string SQL = string.Format(@" SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY pp.CreateTime DESC) AS RowNum,* FROM {0}
 										) as A WHERE A.RowNum BETWEEN (@PageIndex-1)* @PageSize+1 AND @PageIndex*@PageSize ORDER BY RowNum;",
                                   QUERY_SQL);
 
@@ -96,7 +96,7 @@ namespace JobCenter.DAL
         /// <returns></returns>
         public PageOf<Log.RunLog> GetRunLogList(int pageNo, int pageSize)
         {
-            var QUERY_SQL = @"( SELECT Id,Remark,Description,CreateTime,j.JobName,j.ClassName
+            var QUERY_SQL = @"( SELECT r.Id,r.Remark,r.Description,r.CreateTime,j.JobName,j.ClassName
                                 FROM J_RunningLog r INNER JOIN J_Jobs j on r.JobID = j.JobID 
                                 WHERE DATEDIFF(dd,r.CreateTime,GETDATE())<=30";
 

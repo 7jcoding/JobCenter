@@ -3,21 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace JobCenter.Console.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
-
             return View();
         }
 
-        public ActionResult About()
+
+        public ActionResult LoginOut()
         {
-            return View();
+        
+            Session["loginuser"] = null;
+
+            string redirectUrl = string.Empty;
+            if (Request.UrlReferrer != null)
+            {
+                redirectUrl = HttpUtility.UrlEncode(Request.UrlReferrer.PathAndQuery);
+            }
+            string loginUrl = FormsAuthentication.LoginUrl;
+            if (Request.HttpMethod == System.Net.WebRequestMethods.Http.Get && !string.IsNullOrEmpty(redirectUrl))
+            {
+                loginUrl += "?ReturnUrl=" + redirectUrl;
+            }
+            return Redirect(loginUrl);
         }
     }
 }

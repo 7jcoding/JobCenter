@@ -17,7 +17,7 @@ namespace JobCenter.BLL
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public List<Job> GetTaskList(int pageIndex, int pageSize)
+        public PageOf<Job> GetTaskList(int pageIndex, int pageSize)
         {
             return dal.GetTaskList(pageIndex, pageSize);
         }
@@ -26,9 +26,9 @@ namespace JobCenter.BLL
         /// 读取数据库中全部的任务
         /// </summary>
         /// <returns></returns>
-        public List<Job> GetAllTaskList()
+        public List<Job> GetJobList()
         {
-            return dal.GetAllTaskList();
+            return dal.GetJobList();
         }
 
         /// <summary>

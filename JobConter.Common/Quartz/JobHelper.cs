@@ -95,7 +95,7 @@ namespace JobCenter.Common
         /// <returns></returns>
         private static IList<Job> TaskInDB()
         {
-            return task.GetAllTaskList();
+            return task.GetJobList();
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace JobCenter.Common
         /// <returns></returns>
         public static IList<Job> CurrentTaskList()
         {
-            return task.GetAllTaskList();
+            return task.GetJobList();
         }
     }
 }

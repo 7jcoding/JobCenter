@@ -107,18 +107,20 @@
                 var taskParam = $("#TaskParam").val();
                 var assemblyName = $("#AssemblyName").val();
                 var className = $("#ClassName").val();
-                var cronExpressionString = $("#CronExpressionString").val();
+                var cronExpression = $("#CronExpressionString").val();
                 var cronRemark = $("#CronRemark").val();
+                var remark = $("#Remark").val();
                 var status = $("input[type='Status']:checked").val();
 
                 var json = {
-                    TaskID: taskID,
-                    TaskName: taskName,
-                    TaskParam: taskParam,
+                    JobID: taskID,
+                    JobName: taskName,
+                    JobParams: taskParam,
                     AssemblyName: assemblyName,
                     ClassName: className,
-                    CronExpressionString: cronExpressionString,
+                    CronExpression: cronExpression,
                     CronRemark: cronRemark,
+                    Remark: remark,
                     Status: status
                 }
 

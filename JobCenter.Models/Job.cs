@@ -50,7 +50,7 @@ namespace JobCenter.Models
         /// <summary>
         /// 任务创建时间
         /// </summary>
-        public DateTime CreateTime { get; set; }
+        public DateTime CreatedTime { get; set; }
 
         /// <summary>
         /// 任务修改时间
@@ -65,7 +65,7 @@ namespace JobCenter.Models
         /// <summary>
         /// 任务下次运行时间
         /// </summary>
-        public DateTime NextRunTime { get; set; }
+        public DateTime NextFireTime { get; set; }
 
         /// <summary>
         /// 任务备注

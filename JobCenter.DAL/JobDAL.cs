@@ -18,7 +18,7 @@ namespace JobCenter.DAL
         public PageOf<Job> GetTaskList(int pageIndex, int pageSize)
         {
             var QUERY_SQL = @"( SELECT JobID,JobName,JobParams,CronExpression,AssemblyName,ClassName,Status,CreatedTime,ModifyTime,RecentRunTime,NextFireTime,CronRemark,Remark
-	                            FROM J_Jobs WHERE Status = 1";
+	                            FROM J_Jobs WHERE Status <> -1";
 
             QUERY_SQL += ") pp ";
             string SQL = string.Format(@" SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY pp.ModifyTime desc) AS RowNum,* FROM {0}
@@ -46,7 +46,7 @@ namespace JobCenter.DAL
         public List<Job> GetJobList()
         {
             var sql = @"SELECT JobID,JobName,JobParams,CronExpression,AssemblyName,ClassName,Status,CreatedTime,ModifyTime,RecentRunTime,NextFireTime,CronRemark,Remark
-	                    FROM J_Jobs WHERE Status = 1";
+	                    FROM J_Jobs WHERE Status <> -1";
             var result = SQLHelper.ToList<Job>(sql);
             return result;
         }
@@ -151,7 +151,7 @@ namespace JobCenter.DAL
         {
             var sql = @" UPDATE J_Jobs
                            SET JobName = @JobName,JobParams = @JobParams,CronExpression = @CronExpression,AssemblyName = @AssemblyName,ClassName = @ClassName,
-                               Status = @Status,IsDelete = 0,ModifyTime =GETDATE() ,CronRemark = @CronRemark,Remark = @Remark
+                               Status = @Status,ModifyTime =GETDATE() ,CronRemark = @CronRemark,Remark = @Remark
                          WHERE JobID = @JobID";
 
             object param = new
@@ -159,7 +159,7 @@ namespace JobCenter.DAL
                 JobID = task.JobID,
                 JobName = task.JobName,
                 JobParams = task.JobParams,
-                CronExpressionString = task.CronExpression,
+                CronExpression = task.CronExpression,
                 AssemblyName = task.AssemblyName,
                 ClassName = task.ClassName,
                 Status = task.Status,
